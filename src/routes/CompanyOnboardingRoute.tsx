@@ -15,7 +15,7 @@ export function CompanyOnboardingRoute() {
   // Quem já possui empresa não deve acessar esta página
   if (user.company) {
     return <Navigate to="/dashboard" replace />;
-  }
+  } 
 
   return <Outlet />;
 }

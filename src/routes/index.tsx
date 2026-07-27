@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-
+import CustomersPage from "@/features/customers/pages/CustomersPage";
 import { LoginPage } from "@/features/auth/pages/LoginPage";
 import { LandingPage } from "@/features/landing/pages/LandingPage";
 import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import RegisterCompanyPage from "@/features/companies/pages/RegisterCompanyPage";
-
+import CompanyPage from "@/features/companies/pages/CompanyPage";
 import { AppLayout } from "@/components/layouts/AppLayout";
 
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
         path: "/login",
         element: <LoginPage />,
       },
-    ],
+          ],
   },
 
   // Rotas apenas autenticadas
@@ -56,6 +56,14 @@ export const router = createBrowserRouter([
               {
                 path: "/dashboard",
                 element: <DashboardPage />,
+              },
+              {
+                path: "/configuracoes/empresa",
+                element: <CompanyPage />,
+              },
+              {
+                path: "/clientes",
+                element: <CustomersPage />,
               },
             ],
           },

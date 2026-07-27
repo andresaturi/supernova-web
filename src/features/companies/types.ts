@@ -10,11 +10,9 @@ export interface Company {
   is_active: boolean;
 }
 
-export interface CreateCompanyDTO {
-  name: string;
-  legal_name: string;
-  document: string;
-  email: string;
-  phone: string;
-  whatsapp: string;
-}
+export type CreateCompanyDTO = Omit<
+  Company,
+  "id" | "slug" | "is_active"
+>;
+
+export type UpdateCompanyDTO = CreateCompanyDTO;

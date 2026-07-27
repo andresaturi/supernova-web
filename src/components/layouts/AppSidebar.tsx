@@ -47,7 +47,7 @@ const menus = [
   },
   {
   label: "Empresa",
-  path: "/empresa/cadastro",
+  path: "/configuracoes/empresa",
   icon: Settings,
 },
 {
