@@ -6,7 +6,7 @@ import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import RegisterCompanyPage from "@/features/companies/pages/RegisterCompanyPage";
 import CompanyPage from "@/features/companies/pages/CompanyPage";
 import { AppLayout } from "@/components/layouts/AppLayout";
-
+import { PriceTablesPage } from "@/features/pricing/pages/PriceTablesPage";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { PublicRoute } from "./PublicRoute";
 import { CompanyRoute } from "./CompanyRoute";
@@ -65,6 +65,10 @@ export const router = createBrowserRouter([
                 path: "/clientes",
                 element: <CustomersPage />,
               },
+              {
+                path: "/precos",
+                element: <PriceTablesPage />,
+              }
             ],
           },
         ],

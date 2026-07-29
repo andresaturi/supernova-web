@@ -7,6 +7,7 @@ import {
   Printer,
   DollarSign,
   Settings,
+
 } from "lucide-react";
 
 const menus = [
@@ -31,6 +32,11 @@ const menus = [
     icon: ClipboardList,
   },
   {
+    label: "Tabela de Preço",
+    path: "/precos",
+    icon: DollarSign,
+  },
+  {
     label: "Produção",
     path: "/producao",
     icon: Printer,
@@ -46,15 +52,15 @@ const menus = [
     icon: Settings,
   },
   {
-  label: "Empresa",
-  path: "/configuracoes/empresa",
-  icon: Settings,
-},
-{
-  label: "Usuários",
-  path: "/configuracoes/usuarios",
-  icon: Users,
-},
+    label: "Empresa",
+    path: "/configuracoes/empresa",
+    icon: Settings,
+  },
+  {
+    label: "Usuários",
+    path: "/configuracoes/usuarios",
+    icon: Users,
+  },
   
 ];
 
