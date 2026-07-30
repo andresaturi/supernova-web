@@ -6,15 +6,18 @@ import {
 } from "@/components/ui/dialog";
 
 import { CustomerForm } from "./CustomerForm";
+import type { Customer } from "../types";
 
 interface Props {
   open: boolean;
-  onOpenChange(open: boolean): void;
+  onOpenChange: (open: boolean) => void;
+  customer?: Customer;
 }
 
 export function CustomerModal({
   open,
   onOpenChange,
+  customer,
 }: Props) {
   return (
     <Dialog
@@ -25,11 +28,13 @@ export function CustomerModal({
 
         <DialogHeader>
           <DialogTitle>
-            Novo Cliente
+            {customer ? "Editar Cliente" : "Novo Cliente"}
           </DialogTitle>
         </DialogHeader>
 
         <CustomerForm
+          key={customer?.id ?? "new"}
+          customer={customer}
           onSuccess={() => onOpenChange(false)}
         />
 

@@ -1,15 +1,10 @@
 import { z } from "zod";
 
-const optionalString = z.preprocess(
-  (value) => {
-    if (typeof value !== "string") return value;
-
-    const trimmed = value.trim();
-
-    return trimmed === "" ? undefined : trimmed;
-  },
-  z.string().optional()
-);
+const optionalString = z
+  .string()
+  .trim()
+  .transform((value) => (value === "" ? undefined : value))
+  .optional();
 
 export const customerSchema = z.object({
   person_type: z.enum(["PF", "PJ"]),
@@ -50,6 +45,10 @@ export const customerSchema = z.object({
     "bank_slip",
     "bank_transfer",
   ]),
+
+  price_table_id: z
+  .string()
+  .min(1, "Selecione uma tabela de preço."),
 
   origin: z.enum([
     "manual",

@@ -1,11 +1,31 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-import { CustomerTable } from "../components/CustomerTable";
 import { CustomerModal } from "../components/CustomerModal";
+import { CustomerTable } from "../components/CustomerTable";
+import type { Customer } from "../types";
 
 export default function CustomersPage() {
   const [open, setOpen] = useState(false);
+  const [editingCustomer, setEditingCustomer] = useState<Customer>();
+
+  function handleCreate() {
+    setEditingCustomer(undefined);
+    setOpen(true);
+  }
+
+  function handleEdit(customer: Customer) {
+    setEditingCustomer(customer);
+    setOpen(true);
+  }
+
+  function handleClose(open: boolean) {
+    setOpen(open);
+
+    if (!open) {
+      setEditingCustomer(undefined);
+    }
+  }
 
   return (
     <>
@@ -23,19 +43,20 @@ export default function CustomersPage() {
             </p>
           </div>
 
-          <Button onClick={() => setOpen(true)}>
-              Novo Cliente
+          <Button onClick={handleCreate}>
+            Novo Cliente
           </Button>
 
         </div>
 
-        <CustomerTable />
+        <CustomerTable onEdit={handleEdit} />
 
       </div>
 
       <CustomerModal
-          open={open}
-          onOpenChange={setOpen}
+        open={open}
+        onOpenChange={handleClose}
+        customer={editingCustomer}
       />
     </>
   );

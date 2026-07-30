@@ -29,7 +29,7 @@ export interface Customer {
     | "bank_slip"
     | "bank_transfer";
 
-  origin:
+  origin?:
     | "manual"
     | "whatsapp"
     | "instagram"
@@ -45,6 +45,11 @@ export interface Customer {
   notes?: string;
 
   is_active: boolean;
+
+  price_table: {
+    id: string;
+    name: string;
+  };
 
   created_at?: string;
   updated_at?: string;

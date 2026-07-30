@@ -4,13 +4,13 @@ import { toast } from "sonner";
 import { updateCustomer } from "../api";
 import type { CustomerFormData } from "../validation";
 
-interface UpdateCustomerData {
-  id: string;
-  data: CustomerFormData;
-}
-
 interface UseUpdateCustomerOptions {
   onSuccess?: () => void;
+}
+
+interface UpdateCustomerPayload {
+  id: string;
+  payload: CustomerFormData;
 }
 
 export function useUpdateCustomer(
@@ -19,8 +19,8 @@ export function useUpdateCustomer(
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: ({ id, data }: UpdateCustomerData) =>
-      updateCustomer(id, data),
+    mutationFn: ({ id, payload }: UpdateCustomerPayload) =>
+      updateCustomer(id, payload),
 
     onSuccess: () => {
       toast.success("Cliente atualizado com sucesso!");
