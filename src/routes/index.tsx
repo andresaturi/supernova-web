@@ -5,6 +5,7 @@ import { LandingPage } from "@/features/landing/pages/LandingPage";
 import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import RegisterCompanyPage from "@/features/companies/pages/RegisterCompanyPage";
 import CompanyPage from "@/features/companies/pages/CompanyPage";
+import OrdersPage from "@/features/orders/pages/OrdersPage";
 import { AppLayout } from "@/components/layouts/AppLayout";
 import { PriceTablesPage } from "@/features/pricing/pages/PriceTablesPage";
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
               {
                 path: "/precos",
                 element: <PriceTablesPage />,
+              },
+              {
+                path: "/pedidos",
+                element: <OrdersPage />,
               }
             ],
           },

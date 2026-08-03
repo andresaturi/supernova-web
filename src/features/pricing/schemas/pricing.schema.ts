@@ -8,6 +8,15 @@ export const priceTableSchema = z.object({
 
   description: z.string().optional(),
 
+  roll_width: z.coerce
+    .number()
+    .positive("Informe a largura do rolo."),
+
+  safety_margin: z.coerce
+    .number()
+    .min(0)
+    .max(100),
+
   is_default: z.boolean(),
 
   is_active: z.boolean(),
@@ -22,11 +31,7 @@ export const priceRangeSchema = z.object({
 
   price_per_meter: z.coerce.number().positive(),
 
-  roll_width: z.coerce.number().positive(),
-
-  minimum_price: z.coerce.number().min(0),
-
-  margin: z.coerce.number().min(0),
+  minimum_price: z.coerce.number().min(0),  
 
   notes: z.string().optional(),
 
@@ -34,7 +39,6 @@ export const priceRangeSchema = z.object({
 });
 
 export type PriceRangeForm = z.infer<typeof priceRangeSchema>;
-
 
 export interface PriceTableCreatePayload extends PriceTableForm {
   ranges: PriceRangeForm[];

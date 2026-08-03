@@ -45,6 +45,8 @@ export function PriceTableModal({ open, onOpenChange, tableId }: Props) {
     defaultValues: {
       name: "",
       description: "",
+      roll_width: 60,
+      safety_margin: 5,
       is_active: true,
       is_default: false,
     },
@@ -61,6 +63,8 @@ export function PriceTableModal({ open, onOpenChange, tableId }: Props) {
       form.reset({
         name: "",
         description: "",
+        roll_width: 60,
+        safety_margin: 5,
         is_active: true,
         is_default: false,
       });
@@ -74,6 +78,8 @@ export function PriceTableModal({ open, onOpenChange, tableId }: Props) {
     form.reset({
       name: data.name,
       description: data.description,
+      roll_width: data.roll_width,
+      safety_margin: data.safety_margin,
       is_active: data.is_active,
       is_default: data.is_default,
     });
@@ -138,36 +144,90 @@ export function PriceTableModal({ open, onOpenChange, tableId }: Props) {
             className="flex-1 overflow-y-auto px-8 py-6 space-y-6"
           >
             {/* Campos Principais em Grid Horizontal quando há espaço */}
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="md:col-span-1 space-y-2">
-                <Label htmlFor="name">Nome da Tabela</Label>
-                <Input
-                  id="name"
-                  placeholder="Ex: Tabela Varejo, Promocional..."
-                  {...form.register("name")}
-                />
-                {form.formState.errors.name && (
-                  <p className="text-xs text-destructive">
-                    {form.formState.errors.name.message}
-                  </p>
-                )}
-              </div>
+            <div className="grid md:grid-cols-12 gap-6">
 
-              <div className="md:col-span-2 space-y-2">
-                <Label htmlFor="description">Descrição</Label>
-                <Textarea
-                  id="description"
-                  placeholder="Adicione observações ou detalhes sobre o uso desta tabela"
-                  className="resize-none h-[42px] min-h-[42px]"
-                  {...form.register("description")}
-                />
-                {form.formState.errors.description && (
-                  <p className="text-xs text-destructive">
-                    {form.formState.errors.description.message}
-                  </p>
-                )}
-              </div>
-            </div>
+  {/* Nome */}
+  <div className="md:col-span-4 space-y-2">
+    <Label htmlFor="name">Nome da Tabela</Label>
+
+    <Input
+      id="name"
+      placeholder="Ex: DTF 60cm"
+      {...form.register("name")}
+    />
+
+    {form.formState.errors.name && (
+      <p className="text-xs text-destructive">
+        {form.formState.errors.name.message}
+      </p>
+    )}
+  </div>
+
+  {/* Largura do rolo */}
+  <div className="md:col-span-2 space-y-2">
+    <Label htmlFor="roll_width">
+      Largura do rolo (cm)
+    </Label>
+
+    <Input
+      id="roll_width"
+      type="number"
+      step="0.01"
+      {...form.register("roll_width", {
+        valueAsNumber: true,
+      })}
+    />
+
+    {form.formState.errors.roll_width && (
+      <p className="text-xs text-destructive">
+        {form.formState.errors.roll_width.message}
+      </p>
+    )}
+  </div>
+
+  {/* Margem */}
+  <div className="md:col-span-2 space-y-2">
+    <Label htmlFor="safety_margin">
+      Margem de segurança (%)
+    </Label>
+
+    <Input
+      id="safety_margin"
+      type="number"
+      step="0.1"
+      {...form.register("safety_margin", {
+        valueAsNumber: true,
+      })}
+    />
+
+    {form.formState.errors.safety_margin && (
+      <p className="text-xs text-destructive">
+        {form.formState.errors.safety_margin.message}
+      </p>
+    )}
+  </div>
+
+  {/* Descrição */}
+  <div className="md:col-span-4 space-y-2">
+    <Label htmlFor="description">
+      Descrição
+    </Label>
+
+    <Textarea
+      id="description"
+      className="resize-none h-[42px] min-h-[42px]"
+      placeholder="Observações da tabela..."
+      {...form.register("description")}
+    />
+
+    {form.formState.errors.description && (
+      <p className="text-xs text-destructive">
+        {form.formState.errors.description.message}
+      </p>
+    )}
+  </div>
+
+</div>
 
             {/* Opções / Switches em Grid Aconchegante */}
             <div className="grid sm:grid-cols-2 gap-6 p-4 rounded-lg border bg-muted/30">

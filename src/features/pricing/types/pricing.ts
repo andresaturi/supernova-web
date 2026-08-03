@@ -2,6 +2,8 @@ export interface PriceTable {
   id: string;
   name: string;
   description: string;
+  roll_width: number;
+  safety_margin: number;
   is_default: boolean;
   is_active: boolean;
 
@@ -33,8 +35,6 @@ export interface PriceRange {
   roll_width: number;
 
   minimum_price: number;
-
-  margin: number;
 
   notes: string;
 

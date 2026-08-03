@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-
+import { AxiosError } from "axios";
+import { getErrorMessage } from "@/lib/errors";
 import { createCustomer } from "../api";
 import type { CustomerFormData } from "../validation";
 
@@ -27,10 +28,8 @@ export function useCreateCustomer(
       options?.onSuccess?.();
     },
 
-    onError: () => {
-      toast.error(
-        "Não foi possível cadastrar o cliente."
-      );
+    onError: (error: AxiosError) => {
+      toast.error(getErrorMessage(error));
     },
   });
 }

@@ -26,8 +26,7 @@ export function PriceRangeTable({ ranges, onChange }: Props) {
         id: crypto.randomUUID(),
         start_meter: 0,
         end_meter: null,
-        price_per_meter: 0,
-        roll_width: 60,
+        price_per_meter: 0,        
         minimum_price: 0,
         margin: 0,
         notes: "",
@@ -85,10 +84,8 @@ export function PriceRangeTable({ ranges, onChange }: Props) {
             <TableRow className="bg-muted/50 hover:bg-muted/50 text-xs">
               <TableHead className="w-[110px]">Início (m)</TableHead>
               <TableHead className="w-[110px]">Fim (m)</TableHead>
-              <TableHead className="w-[130px]">Preço / m</TableHead>
-              <TableHead className="w-[110px]">Largura</TableHead>
-              <TableHead className="w-[130px]">Preço Mínimo</TableHead>
-              <TableHead className="w-[100px]">Margem</TableHead>
+              <TableHead className="w-[130px]">Preço / m</TableHead>              
+              <TableHead className="w-[130px]">Preço Mínimo</TableHead>              
               <TableHead className="w-[50px] text-right"></TableHead>
             </TableRow>
           </TableHeader>
@@ -96,7 +93,7 @@ export function PriceRangeTable({ ranges, onChange }: Props) {
           <TableBody>
             {ranges.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={7} className="h-32 text-center">
+                <TableCell colSpan={4} className="h-32 text-center">
                   <div className="flex flex-col items-center justify-center gap-2 text-muted-foreground">
                     <Layers className="h-8 w-8 text-muted-foreground/40" />
                     <p className="text-xs font-medium">
@@ -171,28 +168,7 @@ export function PriceRangeTable({ ranges, onChange }: Props) {
                         }
                       />
                     </div>
-                  </TableCell>
-
-                  {/* Largura do rolo (cm) */}
-                  <TableCell className="p-2">
-                    <div className="relative flex items-center">
-                      <Input
-                        type="number"
-                        className="h-8 text-xs font-mono pr-7"
-                        value={range.roll_width}
-                        onChange={(e) =>
-                          updateRange(
-                            index,
-                            "roll_width",
-                            Number(e.target.value)
-                          )
-                        }
-                      />
-                      <span className="absolute right-2 text-[10px] text-muted-foreground pointer-events-none">
-                        cm
-                      </span>
-                    </div>
-                  </TableCell>
+                  </TableCell>                  
 
                   {/* Preço Mínimo */}
                   <TableCell className="p-2">
@@ -214,25 +190,7 @@ export function PriceRangeTable({ ranges, onChange }: Props) {
                         }
                       />
                     </div>
-                  </TableCell>
-
-                  {/* Margem (%) */}
-                  <TableCell className="p-2">
-                    <div className="relative flex items-center">
-                      <Input
-                        type="number"
-                        step="0.1"
-                        className="h-8 text-xs font-mono pr-6"
-                        value={range.margin}
-                        onChange={(e) =>
-                          updateRange(index, "margin", Number(e.target.value))
-                        }
-                      />
-                      <span className="absolute right-2 text-[10px] text-muted-foreground pointer-events-none">
-                        %
-                      </span>
-                    </div>
-                  </TableCell>
+                  </TableCell>                  
 
                   {/* Botão Remover */}
                   <TableCell className="p-2 text-right">
