@@ -1,7 +1,7 @@
 import { api } from "@/services/api";
 
-import type { Order } from "./types";
-import type { OrderFormData } from "./validation";
+import type { Order } from "../types";
+import type { OrderFormData } from "../validation";
 
 export async function createOrder(
   payload: OrderFormData

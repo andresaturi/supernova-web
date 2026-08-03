@@ -21,5 +21,7 @@ export interface Order {
 
   total: number;
 
+  notes?: string;
+
   created_at: string;
 }

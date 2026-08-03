@@ -6,7 +6,6 @@ import type {
 } from "../types/pricing"
 
 import type {
-  PriceTableForm,
   PriceTableCreatePayload,
 } from "../schemas/pricing.schema";
 

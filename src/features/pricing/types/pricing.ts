@@ -54,7 +54,6 @@ export interface PriceRangeForm {
   price_per_meter: number;
   roll_width: number;
   minimum_price: number;
-  margin: number;
 
   notes: string;
   position: number;

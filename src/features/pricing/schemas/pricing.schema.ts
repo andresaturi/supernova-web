@@ -8,11 +8,11 @@ export const priceTableSchema = z.object({
 
   description: z.string().optional(),
 
-  roll_width: z.coerce
+  roll_width: z
     .number()
     .positive("Informe a largura do rolo."),
 
-  safety_margin: z.coerce
+  safety_margin: z
     .number()
     .min(0)
     .max(100),
