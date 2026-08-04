@@ -6,6 +6,7 @@ import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import RegisterCompanyPage from "@/features/companies/pages/RegisterCompanyPage";
 import CompanyPage from "@/features/companies/pages/CompanyPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
+import { BillingPage } from "@/features/billing/pages/BillingPage";
 import { AppLayout } from "@/components/layouts/AppLayout";
 import { PriceTablesPage } from "@/features/pricing/pages/PriceTablesPage";
 import { ProtectedRoute } from "./ProtectedRoute";
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
               {
                 path: "/pedidos",
                 element: <OrdersPage />,
+              },
+              {
+                path: "/financeiro",
+                element: <BillingPage />,
               }
             ],
           },

@@ -21,11 +21,11 @@ const menus = [
     path: "/clientes",
     icon: Users,
   },
-  {
+  /* {
     label: "Orçamentos",
     path: "/orcamentos",
     icon: FileText,
-  },
+  }, */
   {
     label: "Pedidos",
     path: "/pedidos",
