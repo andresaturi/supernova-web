@@ -53,8 +53,19 @@ export function PriceTableModal({ open, onOpenChange, tableId }: Props) {
   });
 
   const { data, isLoading } = usePriceTable(tableId);
-  const createPriceTable = useCreatePriceTable();
-  const updatePriceTable = useUpdatePriceTable();
+  const handleSuccess = () => {
+    form.reset();
+    setRanges([]);
+    onOpenChange(false);
+  };
+
+  const createPriceTable = useCreatePriceTable({
+    onSuccess: handleSuccess,
+  });
+
+  const updatePriceTable = useUpdatePriceTable({
+    onSuccess: handleSuccess,
+  });
   const [ranges, setRanges] = useState<PriceRangeForm[]>([]);
   const isSubmitting = createPriceTable.isPending || updatePriceTable.isPending;
 
@@ -102,11 +113,6 @@ export function PriceTableModal({ open, onOpenChange, tableId }: Props) {
       updatePriceTable.mutate({
         id: tableId,
         payload,
-      },
-      {
-        onSuccess: () => {
-          onOpenChange(false);
-        },
       });
     } else {
       createPriceTable.mutate(payload);

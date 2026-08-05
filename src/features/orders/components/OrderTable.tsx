@@ -28,7 +28,7 @@ export function OrderTable() {
   }
 
   return (
-    <div className="rounded-lg border">
+    <div className="rounded-lg border bg-white shadow-sm">
       <Table>
         <TableHeader>
           <TableRow>

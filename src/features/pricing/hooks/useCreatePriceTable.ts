@@ -4,7 +4,13 @@ import { getErrorMessage } from "@/lib/errors";
 import { createPriceTable } from "../api/priceTables";
 import { pricingKeys } from "../queryKeys";
 
-export function useCreatePriceTable() {
+interface UseCreatePriceTableOptions {
+  onSuccess?: () => void;
+}
+
+export function useCreatePriceTable(
+  options?: UseCreatePriceTableOptions
+) {
   const queryClient = useQueryClient();
 
   return useMutation({
@@ -16,10 +22,12 @@ export function useCreatePriceTable() {
       queryClient.invalidateQueries({
         queryKey: pricingKeys.tables(),
       });
+
+      options?.onSuccess?.();
     },
 
     onError: (error: Error) => {
-       toast.error(getErrorMessage(error));
+      toast.error(getErrorMessage(error));
     },
   });
 }
