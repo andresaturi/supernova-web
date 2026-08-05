@@ -7,6 +7,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 import { OrderForm } from "./OrderForm";
 
@@ -21,6 +23,8 @@ export function OrderModal({
   onOpenChange,
   orderId,
 }: Props) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   return (
     <Dialog
       open={open}
@@ -43,6 +47,7 @@ export function OrderModal({
           <OrderForm
             orderId={orderId}
             onSuccess={() => onOpenChange(false)}
+            onSubmittingChange={setIsSubmitting}
           />
         </div>
 
@@ -51,6 +56,7 @@ export function OrderModal({
             type="button"
             variant="outline"
             onClick={() => onOpenChange(false)}
+            disabled={isSubmitting}
           >
             Cancelar
           </Button>
@@ -58,10 +64,18 @@ export function OrderModal({
           <Button
             type="submit"
             form="order-form"
+            disabled={isSubmitting}
           >
-            {orderId
-              ? "Salvar alterações"
-              : "Criar Pedido"}
+            {isSubmitting ? (
+              <>
+                <Loader2 className="size-4 animate-spin" />
+                {orderId ? "Salvando..." : "Criando pedido..."}
+              </>
+            ) : orderId ? (
+              "Salvar alterações"
+            ) : (
+              "Criar Pedido"
+            )}
           </Button>
         </DialogFooter>
       </DialogContent>

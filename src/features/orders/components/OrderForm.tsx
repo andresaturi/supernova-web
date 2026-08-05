@@ -20,11 +20,13 @@ import {
 interface Props {
   orderId?: string;
   onSuccess?: () => void;
+  onSubmittingChange?: (isSubmitting: boolean) => void;
 }
 
 export function OrderForm({
   orderId,
   onSuccess,
+  onSubmittingChange,
 }: Props) {
   const form = useForm<OrderFormData>({
     resolver: zodResolver(orderSchema),
@@ -46,6 +48,12 @@ export function OrderForm({
   const updateOrder = useUpdateOrder({
     onSuccess,
   });
+
+  const isSubmitting = createOrder.isPending || updateOrder.isPending;
+
+  useEffect(() => {
+    onSubmittingChange?.(isSubmitting);
+  }, [isSubmitting, onSubmittingChange]);
 
   useEffect(() => {
     if (!order) return;
