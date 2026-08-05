@@ -9,11 +9,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 interface FormInputProps<T extends FieldValues> {
-  form: UseFormReturn<T>;
+  form: UseFormReturn<T, unknown, any>;
   name: FieldPath<T>;
   label: string;
   placeholder?: string;
   type?: React.HTMLInputTypeAttribute;
+  step?: number | string;
   disabled?: boolean;
 }
 
@@ -23,6 +24,7 @@ export function FormInput<T extends FieldValues>({
   label,
   placeholder,
   type = "text",
+  step,
   disabled = false,
 }: FormInputProps<T>) {
   const error = get(form.formState.errors, name);
@@ -36,9 +38,13 @@ export function FormInput<T extends FieldValues>({
       <Input
         id={String(name)}
         type={type}
+        step={step}
         placeholder={placeholder}
         disabled={disabled}
-        {...form.register(name)}
+        {...form.register(
+          name,
+          type === "number" ? { valueAsNumber: true } : undefined
+        )}
       />
 
       {error && (

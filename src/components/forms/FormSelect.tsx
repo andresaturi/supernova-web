@@ -13,7 +13,7 @@ interface Option {
 }
 
 interface FormSelectProps<T extends FieldValues> {
-  form: UseFormReturn<T>;
+  form: UseFormReturn<T, unknown, any>;
   name: FieldPath<T>;
   label: string;
   options: Option[];

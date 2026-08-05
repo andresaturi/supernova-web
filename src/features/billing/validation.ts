@@ -3,7 +3,7 @@ import { z } from "zod";
 export const billingSchema = z.object({
   customer_id: z.string().uuid(),
 
-  total: z.coerce
+  total: z
     .number()
     .positive("Informe o valor da cobrança."),
 
@@ -17,7 +17,7 @@ export const billingSchema = z.object({
     "other",
   ]),
 
-  installments: z.coerce
+  installments: z
     .number()
     .int()
     .min(1)
@@ -35,7 +35,7 @@ export type BillingFormData = z.infer<
 >;
 
 export const billingPaymentSchema = z.object({
-  paid_amount: z.coerce
+  paid_amount: z
     .number()
     .positive("Informe o valor recebido."),
 
