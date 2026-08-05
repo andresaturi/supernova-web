@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { ORDER_STATUS } from "@/constants/order-status";
 import { FormSelect } from "@/components/forms/FormSelect";
 
 import {
@@ -17,28 +17,6 @@ interface Props {
   onSuccess?: () => void;
 }
 
-const statusOptions = [
-  {
-    value: "pending",
-    label: "Pendente",
-  },
-  {
-    value: "production",
-    label: "Em produção",
-  },
-  {
-    value: "finished",
-    label: "Finalizado",
-  },
-  {
-    value: "delivered",
-    label: "Entregue",
-  },
-  {
-    value: "cancelled",
-    label: "Cancelado",
-  },
-];
 
 export function OrderStatusForm({
   orderId,
@@ -82,7 +60,10 @@ export function OrderStatusForm({
         form={form}
         name="status"
         label="Status"
-        options={statusOptions}
+        options={ORDER_STATUS.map((s) => ({
+          value: s.value,
+          label: s.label,
+        }))}
       />
     </form>
   );

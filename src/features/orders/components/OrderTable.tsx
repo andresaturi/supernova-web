@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
+import { StatusBadge } from "@/components/status/StatusBadge";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { OrderStatusModal } from "./OrderStatusModal";
@@ -50,9 +50,9 @@ export function OrderTable() {
                 <TableCell>{order.customer.name}</TableCell>
 
                 <TableCell>
-                  <Badge variant="secondary">
-                    {order.status}
-                  </Badge>
+                  <StatusBadge
+                        status={order.status}
+                    />
                 </TableCell>
 
                 <TableCell>
@@ -67,9 +67,10 @@ export function OrderTable() {
                 </TableCell>
 
                 <TableCell>
-                  {new Date(order.created_at).toLocaleDateString(
-                    "pt-BR"
-                  )}
+                   {new Date(order.created_at).toLocaleString("pt-BR", {
+                      dateStyle: "short",
+                      timeStyle: "short",
+                    })}
                 </TableCell>
                 <TableCell>
                   <Button

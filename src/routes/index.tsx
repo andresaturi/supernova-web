@@ -6,6 +6,7 @@ import { DashboardPage } from "@/features/dashboard/pages/DashboardPage";
 import RegisterCompanyPage from "@/features/companies/pages/RegisterCompanyPage";
 import CompanyPage from "@/features/companies/pages/CompanyPage";
 import OrdersPage from "@/features/orders/pages/OrdersPage";
+import { ProductionPage } from "@/features/production/pages/ProductionPage";
 import { BillingPage } from "@/features/billing/pages/BillingPage";
 import { AppLayout } from "@/components/layouts/AppLayout";
 import { PriceTablesPage } from "@/features/pricing/pages/PriceTablesPage";
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
               {
                 path: "/clientes",
                 element: <CustomersPage />,
+              },              
+              {
+                path: "/producao",
+                element: <ProductionPage />,
               },
               {
                 path: "/precos",
