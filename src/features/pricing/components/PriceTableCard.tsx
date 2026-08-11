@@ -1,6 +1,7 @@
 import { MoreVertical, Pencil, Star, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { capitalize } from "@/lib/formatters";
 import {
   Card,
   CardContent,
@@ -31,7 +32,7 @@ export function PriceTableCard({ table, onEdit }: Props) {
           <div className="space-y-1.5 pr-2">
             <div className="flex flex-wrap items-center gap-2">
               <CardTitle className="text-base font-semibold leading-none tracking-tight">
-                {table.name}
+                {capitalize(table?.name)}
               </CardTitle>
 
               {table.is_default && (

@@ -1,5 +1,6 @@
 import { ProductionTable } from "../components/ProductionTable";
 import { useProduction } from "../hooks/useProduction";
+import { Loading } from "@/components/ui/Loading";
 
 export function ProductionPage() {
   const {
@@ -9,7 +10,9 @@ export function ProductionPage() {
   } = useProduction();
 
   if (isLoading) {
-    return <div>Carregando...</div>;
+    return (
+      <Loading />
+    );
   }
 
   if (isError) {

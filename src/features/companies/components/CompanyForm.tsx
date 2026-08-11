@@ -13,6 +13,7 @@ import { useCompany } from "@/features/companies/hooks/useCompany";
 import { useCreateCompany } from "@/features/companies/hooks/useCreateCompany";
 import { useUpdateCompany } from "@/features/companies/hooks/useUpdateCompany";
 
+
 type Props = {
   mode: "create" | "edit";
 };
@@ -96,7 +97,7 @@ export function CompanyForm({ mode }: Props) {
   
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 mt-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 bg-white p-4 rounded-lg shadow-md">
       {fields.map(([name, label, type]) => (
         <div key={name} className="space-y-2">
           <Label htmlFor={name}>{label}</Label>

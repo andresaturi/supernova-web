@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PriceTableModal } from "../components/PriceTableModal";
 import { PriceTableCard } from "../components/PriceTableCard";
 import { usePriceTables } from "../hooks/usePriceTables";
+import { Loading } from "@/components/ui/Loading";
 
 export function PriceTablesPage() {
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ export function PriceTablesPage() {
       </div>
 
       {isLoading ? (
-        <p>Carregando...</p>
+        <Loading />
       ) : (
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {tables.map((table) => (

@@ -11,6 +11,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { OrderStatusModal } from "./OrderStatusModal";
 import { useOrders } from "../hooks/useOrders";
+import { capitalize } from "@/lib/formatters";
+import { Loading } from "@/components/ui/Loading";
 
 export function OrderTable() {
   const { data, isLoading } = useOrders();
@@ -21,14 +23,12 @@ export function OrderTable() {
 
   if (isLoading) {
     return (
-      <div className="rounded-lg border p-8 text-center text-muted-foreground">
-        Carregando pedidos...
-      </div>
+      <Loading />
     );
   }
 
   return (
-    <div className="rounded-lg border bg-white shadow-sm">
+    <div className="rounded-lg border bg-white shadow-sm p-2">
       <Table>
         <TableHeader>
           <TableRow>
@@ -47,7 +47,7 @@ export function OrderTable() {
           {data?.length ? (
             data.map((order) => (
               <TableRow key={order.id}>
-                <TableCell>{order.customer.name}</TableCell>
+                <TableCell>{capitalize(order?.customer?.name)}</TableCell>
 
                 <TableCell>
                   <StatusBadge

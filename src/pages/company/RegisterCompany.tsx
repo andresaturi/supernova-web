@@ -1,4 +1,4 @@
-import { CompanyForm } from "@/components/CompanyForm";
+import { CompanyForm } from "@/features/companies/components/CompanyForm";
 
 export default function RegisterCompany() {
   return (

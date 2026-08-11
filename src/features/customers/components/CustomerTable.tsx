@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useCustomers } from "../hooks/useCustomers";
 import type { Customer } from "../types";
+import { capitalize } from "@/lib/formatters";
+import { Loading } from "@/components/ui/Loading";
 
 interface CustomerTableProps {
   onEdit: (customer: Customer) => void;
@@ -20,10 +22,8 @@ export function CustomerTable({
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border bg-white p-8 text-center text-muted-foreground">
-        Carregando clientes...
-      </div>
-    );
+        <Loading />
+      );
   }
 
   if (!data?.length) {
@@ -73,7 +73,7 @@ export function CustomerTable({
             >
               <td className="px-5 py-4">
                 <div className="font-medium">
-                  {customer.name}
+                  {capitalize(customer?.name)}
                 </div>
 
                 {customer.trade_name && (

@@ -16,6 +16,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Loading } from "@/components/ui/Loading";
 
 import type { Billing } from "../types/billing";
 
@@ -65,9 +66,7 @@ export function BillingTable({
 
   if (loading) {
     return (
-      <div className="rounded-lg border p-10 text-center text-muted-foreground">
-        Carregando...
-      </div>
+      <Loading />
     );
   }
 

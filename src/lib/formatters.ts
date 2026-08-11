@@ -5,11 +5,11 @@ export function capitalize(value: string): string {
 
   return value
     .trim()
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .replace(/\b\p{L}/gu, (char) => char.toUpperCase());
+    .toLocaleLowerCase("pt-BR")
+    .replace(/(^|[\s-])(\p{L})/gu, (_, separator, char) => {
+      return separator + char.toLocaleUpperCase("pt-BR");
+    });
 }
-
 
 export function formatCpfCnpj(value?: string): string {
   if (!value) return "";
