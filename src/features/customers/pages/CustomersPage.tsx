@@ -12,7 +12,7 @@ export default function CustomersPage() {
   const { user } = useAuth();
 
   const clientPortalUrl = import.meta.env.VITE_CLIENT_PORTAL_URL;
-console.log(user?.company);
+
   const portalUrl = user?.company?.slug
   ? `${clientPortalUrl}/${user.company.slug}`
   : null;

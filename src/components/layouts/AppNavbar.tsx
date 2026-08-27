@@ -106,7 +106,13 @@ export function AppNavbar({ onMenuClick }: AppNavbarProps) {
                 {user?.email}
               </p>
             </div>
-
+            <a
+              type="button"              
+              className="w-full justify-start p-3"              
+              href="/plans"
+            >              
+              Planos
+            </a>
             <Button
               type="button"
               variant="ghost"
@@ -115,7 +121,7 @@ export function AppNavbar({ onMenuClick }: AppNavbarProps) {
             >
               <LogOut />
               Sair
-            </Button>
+            </Button>            
           </div>
         </details>
       </div>

@@ -14,6 +14,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { PublicRoute } from "./PublicRoute";
 import { CompanyRoute } from "./CompanyRoute";
 import { CompanyOnboardingRoute } from "./CompanyOnboardingRoute";
+import { PlansPage } from "@/features/subscriptions/components/PlansPage";
 
 export const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ export const router = createBrowserRouter([
           {
             path: "/empresa/cadastro",
             element: <RegisterCompanyPage />,
-          },
+          }          
         ],
       },
     ],
@@ -83,7 +84,11 @@ export const router = createBrowserRouter([
               {
                 path: "/financeiro",
                 element: <BillingPage />,
-              }
+              },
+              {
+                path: "/plans",
+                element: <PlansPage />,
+              },
             ],
           },
         ],

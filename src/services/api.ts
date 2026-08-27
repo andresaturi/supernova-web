@@ -28,6 +28,21 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    // Assinatura necessária
+    if (error.response?.status === 403) {
+      console.log(
+        "Acesso bloqueado:",
+        error.response?.data
+      );
+
+      if (window.location.pathname !== "/plans") {
+        window.location.href = "/plans";
+      }
+
+      return Promise.reject(error);
+    }
+
+    // Token expirado
     if (
       error.response?.status !== 401 ||
       originalRequest._retry
@@ -41,7 +56,6 @@ api.interceptors.response.use(
       const refreshToken = tokenStorage.getRefresh();
 
       if (!refreshToken) {
-        console.log('limpei pela falta de refresh token')
         tokenStorage.clear();
         window.location.href = "/login";
 
@@ -52,7 +66,8 @@ api.interceptors.response.use(
 
       tokenStorage.updateAccess(access);
 
-      originalRequest.headers.Authorization = `Bearer ${access}`;
+      originalRequest.headers.Authorization =
+        `Bearer ${access}`;
 
       return api(originalRequest);
 
