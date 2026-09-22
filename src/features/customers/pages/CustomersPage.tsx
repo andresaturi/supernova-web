@@ -51,7 +51,7 @@ export default function CustomersPage() {
           </div>
 
           <div className="flex items-center gap-2">
-            {portalUrl && (
+            {/* {portalUrl && (
                 <a
                   href={portalUrl}
                   target="_blank"
@@ -61,7 +61,7 @@ export default function CustomersPage() {
                   Portal do cliente
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
-              )}
+              )} */}
 
             <Button onClick={handleCreate}>
               Novo Cliente

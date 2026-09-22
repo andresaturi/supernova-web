@@ -5,15 +5,10 @@ export function LoginPage() {
   return (
     <AuthLayout>
       <div className="mb-8 space-y-2 text-center">
-        <h1 className="text-3xl font-bold">
-          SupernovaPrint
-        </h1>
-
-        <p className="text-muted-foreground">
-          Faça login para continuar
-        </p>
+        <div className="flex items-center justify-center gap-2">
+          <img src="/logo.png" className="w-40" alt="" />
+        </div>        
       </div>
-
       <LoginForm />
     </AuthLayout>
   );

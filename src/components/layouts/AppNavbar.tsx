@@ -34,9 +34,9 @@ export function AppNavbar({ onMenuClick }: AppNavbarProps) {
           </button>
 
           {/* Logo */}
-          <h1 className="text-xl font-bold text-indigo-600 sm:text-2xl">
-            SupernovaPrint
-          </h1>
+          <div className="flex items-center gap-2">
+            <img src="/logo.png" className="w-30" alt="" />
+          </div>
         </div>
 
         {/* Usuário */}

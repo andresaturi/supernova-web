@@ -141,11 +141,11 @@ export function CustomerForm({
           type="email"
         />
 
-        <FormInput
+        {/* <FormInput
           form={form}
           name="phone"
           label="Telefone"
-        />
+        /> */}
 
         <FormInput
           form={form}

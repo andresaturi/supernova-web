@@ -20,12 +20,7 @@ export function LandingPage() {
       <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-500/30">
-              <Printer className="h-5 w-5" />
-            </div>
-            <span className="text-lg font-bold tracking-tight text-white">
-              DTF<span className="text-blue-500">Flow</span>
-            </span>
+            <img src="/logo.png" className="w-22" alt="" />
           </div>
 
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
@@ -355,11 +350,12 @@ export function LandingPage() {
       {/* 8. Footer */}
       <footer className="border-t border-slate-900 py-8 bg-slate-950 text-xs text-slate-500 text-center">
         <div className="mx-auto max-w-7xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          
           <div className="flex items-center gap-2">
-            <Printer className="h-4 w-4 text-blue-500" />
-            <span className="font-bold text-slate-400">DTFFlow</span>
+            <img src="/logo.png" className="w-22" alt="" />
           </div>
-          <p>© {new Date().getFullYear()} DTFFlow. Todos os direitos reservados.</p>
+          
+          <p>© {new Date().getFullYear()} DTFGo. Todos os direitos reservados.</p>
         </div>
       </footer>
 
