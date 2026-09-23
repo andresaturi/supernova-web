@@ -4,6 +4,7 @@ import {
   CreditCard,
   Eye,
 } from "lucide-react";
+import { formatDate } from "@/utils/date";
 
 import {
   Table,
@@ -116,9 +117,7 @@ export function BillingTable({
                 </TableCell>
 
                 <TableCell>
-                  {new Date(
-                    billing.due_date
-                  ).toLocaleDateString("pt-BR")}
+                  {formatDate(billing.due_date)}
                 </TableCell>
 
                 <TableCell>
