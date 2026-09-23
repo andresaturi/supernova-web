@@ -29,6 +29,8 @@ export interface Customer {
     | "bank_slip"
     | "bank_transfer";
 
+  payment_term_days?: number | null;
+  
   origin?:
     | "manual"
     | "whatsapp"

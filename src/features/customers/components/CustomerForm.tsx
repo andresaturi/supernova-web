@@ -39,6 +39,7 @@ export function CustomerForm({
 
       preferred_contact: "whatsapp",
       default_payment_method: "pix",
+      payment_term_days: undefined,
       origin: "manual",
 
       state_registration: "",
@@ -70,28 +71,32 @@ export function CustomerForm({
     }
   }
 
-  useEffect(() => {
-    if (!customer) return;
+    useEffect(() => {
+      if (!customer) return;
 
-    form.reset({
-      person_type: customer.person_type,
-      name: customer.name,
-      trade_name: customer.trade_name ?? "",
-      document: customer.document,
-      email: customer.email ?? "",
-      phone: customer.phone ?? "",
-      whatsapp: customer.whatsapp ?? "",
-      preferred_contact: customer.preferred_contact,
-      default_payment_method: customer.default_payment_method,
-      origin: customer.origin ?? "manual",
-      state_registration: customer.state_registration ?? "",
-      municipal_registration: customer.municipal_registration ?? "",
-      contact_name: customer.contact_name ?? "",
-      notes: customer.notes ?? "",
-      price_table_id: customer.price_table.id,
-      is_active: customer.is_active,
-    });
-  }, [customer, form]);
+      form.reset({
+        person_type: customer.person_type,
+        name: customer.name,
+        trade_name: customer.trade_name ?? "",
+        document: customer.document,
+        email: customer.email ?? "",
+        phone: customer.phone ?? "",
+        whatsapp: customer.whatsapp ?? "",
+        preferred_contact: customer.preferred_contact,
+        default_payment_method: customer.default_payment_method,
+        payment_term_days: customer.payment_term_days ?? undefined,
+
+        origin: customer.origin ?? "manual",
+        state_registration:
+          customer.state_registration ?? "",
+        municipal_registration:
+          customer.municipal_registration ?? "",
+        contact_name: customer.contact_name ?? "",
+        notes: customer.notes ?? "",
+        price_table_id: customer.price_table.id,
+        is_active: customer.is_active,
+      });
+    }, [customer, form]);
 
   return (
     <form
@@ -152,6 +157,20 @@ export function CustomerForm({
           name="whatsapp"
           label="WhatsApp"
         />
+
+        <div>
+        <FormInput
+          form={form}
+          name="payment_term_days"
+          label="Prazo de pagamento"
+          type="number"
+          placeholder="Ex.: 30"
+        />
+
+        <p className="mt-1 text-xs text-muted-foreground">
+          Deixe vazio para vencer no dia do recebimento.
+        </p>
+      </div>
 
         <FormSelect
           form={form}

@@ -46,6 +46,12 @@ export const customerSchema = z.object({
     "bank_transfer",
   ]),
 
+  payment_term_days: z
+    .number()
+    .int("O prazo deve ser um número inteiro.")
+    .min(0, "O prazo não pode ser negativo.")
+    .optional(),
+
   price_table_id: z
   .string()
   .min(1, "Selecione uma tabela de preço."),
