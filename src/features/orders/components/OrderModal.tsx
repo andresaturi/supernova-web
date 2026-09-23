@@ -30,7 +30,7 @@ export function OrderModal({
       open={open}
       onOpenChange={onOpenChange}
     >
-      <DialogContent className="w-[95vw] max-w-3xl p-0 gap-0 overflow-hidden">
+      <DialogContent className="w-[95vw] max-w-3xl max-h-[90vh] p-0 gap-0 overflow-hidden flex flex-col">
         <DialogHeader className="px-8 pt-6 pb-4 border-b">
           <DialogTitle className="text-xl font-semibold">
             {orderId
@@ -43,7 +43,7 @@ export function OrderModal({
           </DialogDescription>
         </DialogHeader>
 
-        <div className="flex-1 overflow-y-auto px-8 py-6">
+        <div className="flex-1 min-h-0 overflow-y-auto px-8 py-6">
           <OrderForm
             orderId={orderId}
             onSuccess={() => onOpenChange(false)}

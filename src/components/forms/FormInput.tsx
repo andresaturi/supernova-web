@@ -43,7 +43,12 @@ export function FormInput<T extends FieldValues>({
         disabled={disabled}
         {...form.register(
           name,
-          type === "number" ? { valueAsNumber: true } : undefined
+          type === "number"
+            ? {
+                setValueAs: (value) =>
+                  value === "" ? undefined : Number(value),
+              }
+            : undefined
         )}
       />
 

@@ -34,10 +34,26 @@ export async function createOrder(
     payload.notes ?? ""
   );
 
+  if (!payload.file) {
+    throw new Error("Selecione um arquivo.");
+  }
+
   formData.append(
     "file",
     payload.file
   );
+
+  formData.append(
+    "paid",
+    String(payload.paid)
+  );
+
+  if (payload.payment_method) {
+    formData.append(
+      "payment_method",
+      payload.payment_method
+    );
+  }
 
   const { data } = await api.post<Order>(
     "/orders/",
