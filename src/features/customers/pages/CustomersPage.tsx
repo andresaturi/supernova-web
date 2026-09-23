@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight } from "lucide-react";
 import { CustomerModal } from "../components/CustomerModal";
 import { CustomerTable } from "../components/CustomerTable";
 import type { Customer } from "../types";

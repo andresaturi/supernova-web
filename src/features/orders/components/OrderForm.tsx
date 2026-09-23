@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Check,
-  CheckCircle2,
   FileText,
   Image as ImageIcon,
   Search,

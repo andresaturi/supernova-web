@@ -8,6 +8,10 @@ export async function createOrder(
 ): Promise<Order> {
   const formData = new FormData();
 
+  if (!payload.file) {
+    throw new Error("Selecione um arquivo.");
+  }
+
   formData.append(
     "customer_id",
     payload.customer_id
