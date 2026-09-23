@@ -10,22 +10,17 @@ import { StatusBadge } from "@/components/status/StatusBadge";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { OrderStatusModal } from "./OrderStatusModal";
-import { useOrders } from "../hooks/useOrders";
 import { capitalize } from "@/lib/formatters";
-import { Loading } from "@/components/ui/Loading";
 
-export function OrderTable() {
-  const { data, isLoading } = useOrders();
+interface OrderTableProps {
+  orders: any[];
+}
+
+export function OrderTable({ orders }: OrderTableProps) {
   const [selectedOrder, setSelectedOrder] = useState<{
     id: string;
     status: string;
   } | null>(null);
-
-  if (isLoading) {
-    return (
-      <Loading />
-    );
-  }
 
   return (
     <div className="rounded-lg border bg-white shadow-sm p-2">
@@ -44,15 +39,15 @@ export function OrderTable() {
         </TableHeader>
 
         <TableBody>
-          {data?.length ? (
-            data.map((order) => (
+          {orders.length ? (
+            orders.map((order) => (
               <TableRow key={order.id}>
-                <TableCell>{capitalize(order?.customer?.name)}</TableCell>
+                <TableCell>
+                  {capitalize(order?.customer?.name)}
+                </TableCell>
 
                 <TableCell>
-                  <StatusBadge
-                        status={order.status}
-                    />
+                  <StatusBadge status={order.status} />
                 </TableCell>
 
                 <TableCell>
@@ -67,11 +62,12 @@ export function OrderTable() {
                 </TableCell>
 
                 <TableCell>
-                   {new Date(order.created_at).toLocaleString("pt-BR", {
-                      dateStyle: "short",
-                      timeStyle: "short",
-                    })}
+                  {new Date(order.created_at).toLocaleString("pt-BR", {
+                    dateStyle: "short",
+                    timeStyle: "short",
+                  })}
                 </TableCell>
+
                 <TableCell>
                   <Button
                     size="sm"
@@ -91,8 +87,8 @@ export function OrderTable() {
           ) : (
             <TableRow>
               <TableCell
-                colSpan={5}
-                className="text-center py-8 text-muted-foreground"
+                colSpan={6}
+                className="py-8 text-center text-muted-foreground"
               >
                 Nenhum pedido encontrado.
               </TableCell>
@@ -100,18 +96,19 @@ export function OrderTable() {
           )}
         </TableBody>
       </Table>
+
       {selectedOrder && (
-          <OrderStatusModal
-            open={!!selectedOrder}
-            onOpenChange={(open) => {
-              if (!open) {
-                setSelectedOrder(null);
-              }
-            }}
-            orderId={selectedOrder.id}
-            currentStatus={selectedOrder.status}
-          />
-        )}
+        <OrderStatusModal
+          open={!!selectedOrder}
+          onOpenChange={(open) => {
+            if (!open) {
+              setSelectedOrder(null);
+            }
+          }}
+          orderId={selectedOrder.id}
+          currentStatus={selectedOrder.status}
+        />
+      )}
     </div>
   );
 }
